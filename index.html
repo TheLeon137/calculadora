@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculadora Básica</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .calculator {
+      width: 300px;
+      padding: 20px;
+      border: 1px solid #000000;
+      border-radius: 5px;
+      text-align: center;
+      background-color: #c6c6c6;
+    }
+
+    .input-group {
+      margin-bottom: 10px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 1px;
+      border: 1px solid #000000;
+    }
+
+    .btn {
+      padding: 10px;
+      background-color: #707570;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 45%; /* Ajustamos el ancho de los botones */
+      margin: 5px; /* Agregamos margen a los botones */
+      border: 1px solid #000000;
+    }
+
+    .btn:hover {
+      background-color: #8dff96;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h2>Calculadora Básica</h2>
+    <div class="input-group">
+      <label for="num1">Número 1:</label>
+      <input type="number" id="num1">
+    </div>
+    <div class="input-group">
+      <label for="num2">Número 2:</label>
+      <input type="number" id="num2">
+    </div>
+    <div class="input-group">
+      <button class="btn" onclick="calcular('suma')">Sumar</button>
+      <button class="btn" onclick="calcular('resta')">Restar</button>
+      <button class="btn" onclick="calcular('multiplicacion')">Multiplicar</button>
+      <button class="btn" onclick="calcular('division')">Dividir</button>
+    </div>
+    <div class="input-group">
+      <label for="resultado">Resultado:</label>
+      <input type="text" id="resultado" disabled>
+    </div>
+  </div>
+
+  <script>
+    const calcular = (operacion) => {
+      const num1 = parseFloat(document.getElementById('num1').value);
+      const num2 = parseFloat(document.getElementById('num2').value);
+      let resultado;
+
+      switch (operacion) {
+        case 'suma':
+          resultado = num1 + num2;
+          break;
+        case 'resta':
+          resultado = num1 - num2;
+          break;
+        case 'multiplicacion':
+          resultado = num1 * num2;
+          break;
+        case 'division':
+          if (num2 !== 0) {
+            resultado = num1 / num2;
+          } else {
+            resultado = "Error: no es posible dividir entre cero";
+          }
+          break;
+        default:
+          resultado = "Operación no válida";
+      }
+
+      document.getElementById('resultado').value = resultado;
+    };
+  </script>
+</body>
+</html>
